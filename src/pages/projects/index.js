@@ -9,8 +9,6 @@ export default function Projects({ data }) {
 
   const projects = data.projects.nodes
   const contact = data.contact.siteMetadata.contact
-  const image = getImage(projects.frontmatter.thumb)
-  console.log(image)
   return (
     <Layout>
       <div className={styles.portfolio}>
@@ -20,7 +18,7 @@ export default function Projects({ data }) {
           {projects.map(project => (
             <Link to={"/projects/" + project.frontmatter.slug} key={project.id}>
               <div>
-                <GatsbyImage image={image} />
+                <GatsbyImage image={getImage(project.frontmatter.thumb)} />
                 <h3>{project.frontmatter.title}</h3>
                 <p>{project.frontmatter.stack}</p>
               </div>
